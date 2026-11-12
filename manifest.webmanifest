@@ -1,0 +1,11 @@
+{
+  "name": "ARISE — Evolution System",
+  "short_name": "ARISE",
+  "description": "Your personal evolution system.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090b14",
+  "theme_color": "#090b14",
+  "orientation": "portrait",
+  "icons": []
+}
