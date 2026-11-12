@@ -1,5 +1,5 @@
-const CACHE='arise-shell-v2';
-const ASSETS=['/','/manifest.webmanifest','/icon.svg'];
+const CACHE='arise-shell-v3';
+const ASSETS=['/','/manifest.webmanifest','/icon.svg','/assets/elevation.webp'];
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)));
   self.skipWaiting();
