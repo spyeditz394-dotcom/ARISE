@@ -46,7 +46,7 @@ const dateKey=(d=new Date())=>{const y=d.getFullYear(),m=String(d.getMonth()+1).
 const todayKey=()=>dateKey();
 let trainingRange=7,midnightTimer=null;
 function rolloverDay(){const today=todayKey();if(!state.lastLocalDate){state.lastLocalDate=today;save();return false}if(state.lastLocalDate===today)return false;state.quests.forEach(q=>{if(q.frequency==='daily')q.done=false});state.habits.forEach(h=>{h.done=false});state.lastLocalDate=today;save();return true}
-function scheduleMidnightRefresh(){if(midnightTimer)clearTimeout(midnightTimer);const now=new Date(),next=new Date(now.getFullYear(),now.getMonth(),now.getDate()+1,0,0,1);midnightTimer=setTimeout(()=>{if(rolloverDay()){render();toast('New day · daily progress refreshed')}scheduleMidnightRefresh()},Math.max(1000,next.getTime()-Date.now()))}
+function scheduleMidnightRefresh(){if(midnightTimer)clearTimeout(midnightTimer);const now=new Date(),next=new Date(now.getFullYear(),now.getMonth(),now.getDate()+1,0,0,0);midnightTimer=setTimeout(()=>{if(rolloverDay()){render();toast('New day · daily progress refreshed')}scheduleMidnightRefresh()},Math.max(1000,next.getTime()-Date.now()))}
 function checkDayChange(){if(rolloverDay()){render();toast('New day · daily progress refreshed')}scheduleMidnightRefresh()}
 const xpLevel=()=>Math.floor(state.xp/100)+1;
 const rank=()=>{let l=xpLevel();return l>=40?'SSS':l>=30?'SS':l>=20?'S':l>=15?'A':l>=10?'B':l>=6?'C':l>=3?'D':'E'};
